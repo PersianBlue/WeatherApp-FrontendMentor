@@ -1,0 +1,43 @@
+<p>
+  <!-- Units Switch to Imperial/Metric Temperature Celsius (°C) Fahrenheit (°F)
+    Wind Speed km/h mph Precipitation Millimeters (mm) Inches (in) Search for
+    a city, e.g., New York Search Feels like -->
+  <!-- Insert temperature here -->
+
+  Temperature: {weatherData.current.temperature_2m} °C<br />
+  Feels like: {weatherData.current.apparent_temperature} °C<br />
+  Humidity: {weatherData.current.relative_humidity_2m} %<br />
+  Wind: <!-- Insert wind here -->
+  <br />
+  Precipitation: {weatherData.current.precipitation} mm<br />
+  Daily forecast:
+  <!-- Insert daily forecast for the next 7 days here -->
+  <ul>
+    {
+      weatherData.daily.time.map((date, index) => (
+        <li>
+          {date.toDateString()}: {weatherData.daily.temperature_2m_max[index]}{" "}
+          °C / {weatherData.daily.temperature_2m_min[index]} °C, Code:
+          {weatherData.daily.weather_code[index]}
+        </li>
+      ))
+    }
+  </ul>
+  Hourly forecast for today:
+  <!-- Insert hourly forecast for the selected day here -->
+  <ul>
+    {
+      weatherData.hourly.time
+        .filter((date) => date.getDate() === currentTime.getDate())
+        .map((date, index) => (
+          <li>
+            {date.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}
+            : {weatherData.hourly.temperature_2m?.[index] ?? "N/A"} °C
+          </li>
+        ))
+    }
+  </ul>
+</p>

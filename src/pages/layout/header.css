@@ -1,0 +1,41 @@
+/* Weather Now */
+.header {
+  /* Header */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  /* align-items: center; */
+  padding: 0px;
+  gap: 8px;
+}
+header-title {
+  width: 103px;
+  height: 18px;
+
+  font-family: "Bricolage Grotesque";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15.4px;
+  line-height: 18px;
+
+  color: #ffffff;
+}
+
+.settings-container {
+  /* Settings Container */
+
+  /* Auto layout */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 4px;
+  gap: 6px;
+
+  margin: 0 auto;
+  width: auto;
+  height: auto;
+  border-color: white;
+  border-width: 3px;
+  cursor: pointer;
+}
