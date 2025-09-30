@@ -1,3 +1,45 @@
+// In your parent component (WeatherApp, etc.)
+const [units, setUnits] = useState({
+  temperature: 'fahrenheit',
+  windSpeed: 'mph', 
+  precipitation: 'inch'
+});
+
+// New function to handle all unit changes
+const updateUnits = (unitType, newUnit) => {
+  setUnits(prev => ({
+    ...prev,
+    [unitType]: newUnit
+  }));
+};
+
+// Bulk switch between imperial and metric
+const switchToImperial = () => {
+  setUnits({
+    temperature: 'fahrenheit',
+    windSpeed: 'mph',
+    precipitation: 'inch'
+  });
+};
+
+const switchToMetric = () => {
+  setUnits({
+    temperature: 'celsius',
+    windSpeed: 'kmh',
+    precipitation: 'mm'
+  });
+};
+
+// For API calls, convert to your existing params format
+const getApiParams = () => ({
+  ...params,
+  temperature_unit: units.temperature,
+  wind_speed_unit: units.windSpeed,
+  precipitation_unit: units.precipitation
+});
+
+
+
 <p>
   <!-- Units Switch to Imperial/Metric Temperature Celsius (°C) Fahrenheit (°F)
     Wind Speed km/h mph Precipitation Millimeters (mm) Inches (in) Search for

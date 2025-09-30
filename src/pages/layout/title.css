@@ -1,15 +1,16 @@
 /* Weather Now */
-.header {
+.titleBar {
   /* Header */
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /* align-items: center; */
+  align-items: left;
   padding: 0px;
   gap: 8px;
+  width: 400px;
 }
-header-title {
+title-text {
   width: 103px;
   height: 18px;
 

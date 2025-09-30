@@ -1,10 +1,9 @@
-import "./header.css";
-import SettingsButton from "../components/SettingsButton.jsx";
+import "./title.css";
 
-const Header = ({ switchUnits }) => {
+const Title = () => {
   return (
     <div
-      className="header"
+      className="titleBar"
       style={{ borderColor: "white", borderWidth: "3px", borderStyle: "solid" }}
     >
       <svg
@@ -39,10 +38,9 @@ const Header = ({ switchUnits }) => {
           fill="#FF820A"
         ></path>
       </svg>
-      <h1 className="header-title">Weather Now</h1>
-      <SettingsButton switchUnits={switchUnits} />
+      <h1 className="title-text">Weather Now</h1>
     </div>
   );
 };
 
-export default Header;
+export default Title;

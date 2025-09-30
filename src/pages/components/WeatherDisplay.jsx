@@ -4,7 +4,9 @@ import { set } from "astro:schema";
 import { geocodeLocation, handleFetchAPI } from "../../services/FetchData";
 import SearchForm from "./SearchForm";
 import WeatherSummary from "./WeatherSummary";
-import Header from "../layout/header";
+
+import SettingsMenu from "./SettingsMenu.jsx";
+import Title from "../layout/Title.jsx";
 
 export default function WeatherDisplay() {
   const [weatherData, setWeatherData] = useState(null);
@@ -23,37 +25,38 @@ export default function WeatherDisplay() {
       "weather_code",
       "wind_speed_10m",
     ],
-    wind_speed_unit: "mph",
-    temperature_unit: "fahrenheit",
-    precipitation_unit: "inch",
   });
 
-  const url = "https://api.open-meteo.com/v1/forecast";
+  const [unitType, setUnitType] = useState("metric");
 
-  const switchUnits = (
-    changeTemp = false,
-    changeWind_speed = false,
-    changePrecipitation = false
-  ) => {
-    const updates = {};
-
-    if (changeTemp) {
-      updates.temperature_unit =
-        params.temperature_unit === "fahrenheit" ? "celsius" : "fahrenheit";
-    }
-    if (changeWind_speed) {
-      updates.wind_speed_unit =
-        params.wind_speed_unit === "mph" ? "kmh" : "mph";
-    }
-    if (changePrecipitation) {
-      updates.precipitation_unit =
-        params.precipitation_unit === "inch" ? "mm" : "inch";
-    }
-
-    if (Object.keys(updates).length > 0) {
-      setParams({ ...params, ...updates });
-    }
+  const updateUnits = (unitType, newUnit) => {
+    setParams((oldParams) => ({
+      ...oldParams,
+      [unitType]: newUnit,
+    }));
   };
+
+  const switchToImperial = () => {
+    setParams((oldParams) => ({
+      ...oldParams,
+      temperature_unit: "fahrenheit",
+      wind_speed_unit: "mph",
+      precipitation_unit: "inch",
+    }));
+    setUnitType("imperial");
+  };
+
+  const switchToMetric = () => {
+    setParams((prev) => ({
+      ...prev,
+      temperature_unit: "celsius",
+      wind_speed_unit: "kmh",
+      precipitation_unit: "mm",
+    }));
+    setUnitType("metric");
+  };
+
+  const url = "https://api.open-meteo.com/v1/forecast";
 
   async function handleSearch(cityName) {
     setLoading(true);
@@ -88,7 +91,16 @@ export default function WeatherDisplay() {
       <button onClick={() => switchUnits(true, true, true)}>
         Switch Units
       </button>
-      <Header switchUnits={switchUnits} />
+      <div className="header border-8 border-blue">
+        <Title />
+        <SettingsMenu
+          params={params}
+          updateUnits={updateUnits}
+          switchToImperial={switchToImperial}
+          switchToMetric={switchToMetric}
+          unitType={unitType}
+        />
+      </div>
 
       {loading && <p>Loading...</p>}
 
