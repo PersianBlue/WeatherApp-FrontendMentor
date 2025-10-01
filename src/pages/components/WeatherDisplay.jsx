@@ -1,20 +1,20 @@
 import { useState } from "react";
-import weatherDescriptions from "../../../assets/weatherDescriptions.json";
 import { set } from "astro:schema";
 import { geocodeLocation, handleFetchAPI } from "../../services/FetchData";
 import SearchForm from "./SearchForm";
-import WeatherSummary from "./WeatherSummary";
-
 import SettingsMenu from "./SettingsMenu.jsx";
-import Title from "../layout/Title.jsx";
-
+import DailyForecast from "./DailyForecast.jsx";
+import HourlyForecast from "./HourlyForecast.jsx";
+import CurrentForecast from "./CurrentForecast.jsx";
+import "../../styles/global.css";
+import "../..//styles/weatherDisplay.css";
 export default function WeatherDisplay() {
   const [weatherData, setWeatherData] = useState(null);
   const [locationData, setLocationData] = useState(null);
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useState({
-    latitude: 52.52,
-    longitude: 13.41,
+    latitude: 52.52437,
+    longitude: 13.41053,
     daily: ["weather_code", "temperature_2m_max", "temperature_2m_min"],
     hourly: ["temperature_2m", "weather_code"],
     current: [
@@ -86,85 +86,34 @@ export default function WeatherDisplay() {
   }
 
   return (
-    <div>
-      <SearchForm handleSearch={handleSearch} />
-      <button onClick={() => switchUnits(true, true, true)}>
-        Switch Units
-      </button>
-      <div className="header border-8 border-blue">
-        <Title />
+    <div className="home gap-2">
+      <div className="border-2 flex items-center justify-between">
+        <img
+          className="logo"
+          src="../../../assets/images/logo.svg"
+          alt="Weather Now Logo"
+        />
         <SettingsMenu
-          params={params}
           updateUnits={updateUnits}
           switchToImperial={switchToImperial}
           switchToMetric={switchToMetric}
           unitType={unitType}
         />
       </div>
+      <h1>How's the sky looking today?</h1>
 
+      <SearchForm handleSearch={handleSearch} />
       {loading && <p>Loading...</p>}
 
-      {weatherData && weatherData.current && weatherData.daily && (
-        <>
-          <WeatherSummary
-            weatherData={weatherData}
-            locationData={locationData}
-            params={params}
-          />
-          <div>Daily forecast:</div>
-          <ul>
-            {weatherData.daily.time &&
-              weatherData.daily.time.map((date, index) => (
-                <li key={date}>
-                  {new Date(date).toDateString()}:{" "}
-                  {weatherData.daily.temperature_2m_max
-                    ? weatherData.daily.temperature_2m_max[index]
-                    : "N/A"}{" "}
-                  °C /{" "}
-                  {weatherData.daily.temperature_2m_min
-                    ? weatherData.daily.temperature_2m_min[index]
-                    : "N/A"}{" "}
-                  °C
-                  {
-                    <img
-                      src={
-                        weatherDescriptions[
-                          weatherData.daily.weather_code[index]
-                        ].day.image
-                      }
-                      alt="Weather Code Icon    "
-                    ></img>
-                  }
-                </li>
-              ))}
-          </ul>
-          <p>Hourly forecast</p>
-          <ul>
-            {weatherData.hourly.time &&
-              weatherData.hourly.time.map((time, index) => (
-                <li key={time}>
-                  {weatherData.hourly.time
-                    ? new Date(time).toLocaleTimeString([], { hour: "numeric" })
-                    : "N/A"}{" "}
-                  {weatherData.hourly.temperature_2m
-                    ? weatherData.hourly.temperature_2m[index]
-                    : "N/A"}{" "}
-                  °C /{" "}
-                  {
-                    <img
-                      src={
-                        weatherDescriptions[
-                          weatherData.hourly.weather_code[index]
-                        ].day.image
-                      }
-                      alt="Weather Code Icon    "
-                    ></img>
-                  }
-                </li>
-              ))}
-          </ul>
-        </>
-      )}
+      <div className="main ">
+        <CurrentForecast
+          weatherData={weatherData}
+          locationData={locationData}
+          params={params}
+        />
+        <DailyForecast weatherData={weatherData} />
+        <HourlyForecast weatherData={weatherData} />
+      </div>
     </div>
   );
 }

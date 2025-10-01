@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function WeatherSummary({ weatherData, locationData, params }) {
+export default function CurrentForecast({ weatherData, locationData, params }) {
   if (!weatherData || !weatherData.current) {
     return null;
   }

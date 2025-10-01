@@ -1,7 +1,6 @@
 import { useState } from "react";
 
 export default function SettingsMenu({
-  params,
   updateUnits,
   switchToImperial,
   switchToMetric,
@@ -23,8 +22,18 @@ export default function SettingsMenu({
   };
 
   return (
-    <div className="relative">
-      <button onClick={() => setIsOpen(!isOpen)}>⚙️ Settings</button>
+    <div>
+      <button
+        className="flex items-center justify-between gap-4 border-2"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <img src="../../../assets/images/icon-units.svg" alt="settings icon" />
+        Units
+        <img
+          src="../../../assets/images/icon-dropdown.svg"
+          alt="Weather Now Logo"
+        />
+      </button>
       {/* Dropdown Menu */}
       {isOpen && (
         <div>
@@ -36,7 +45,7 @@ export default function SettingsMenu({
 
           <div>
             <p>Temperature</p>
-            <div className="space-y-1">
+            <div>
               <button
                 onClick={() => updateUnits("temperature_unit", "celsius")}
               >
@@ -50,10 +59,9 @@ export default function SettingsMenu({
             </div>
           </div>
 
-          {/* Wind Speed Section */}
           <div>
             <p>Wind Speed</p>
-            <div className="space-y-1">
+            <div>
               <button onClick={() => updateUnits("wind_speed_unit", "kmh")}>
                 km/h
               </button>
@@ -63,10 +71,9 @@ export default function SettingsMenu({
             </div>
           </div>
 
-          {/* Precipitation Section */}
-          <div className="p-4">
+          <div>
             <p>Precipitation</p>
-            <div className="space-y-1">
+            <div>
               <button onClick={() => updateUnits("precipitation_unit", "mm")}>
                 Millimeters (mm)
               </button>

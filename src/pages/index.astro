@@ -9,6 +9,13 @@ import WeatherDisplay from "./components/WeatherDisplay";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,600&family=Bricolage+Grotesque:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <link rel="stylesheet" href="/styles/globals.css" /> -->
     <!-- displays site properly based on user's device -->
 
     <link
@@ -32,31 +39,9 @@ import WeatherDisplay from "./components/WeatherDisplay";
     </style>
   </head>
   <body>
-    <h1 class="text-center text-green-500 font-bold">
-      How's the sky looking today?
-    </h1>
+    <h1 class="text-center text-green-500 font-bold"></h1>
     <WeatherDisplay client:load />
     <p>
-      <!-- Units Switch to Imperial/Metric Temperature Celsius (°C) Fahrenheit (°F)
-      Wind Speed km/h mph Precipitation Millimeters (mm) Inches (in) Search for
-      a city, e.g., New York Search Feels like -->
-      <!-- Insert temperature here -->
-
-      Humidity
-      <!-- Insert humidity here -->
-
-      Wind
-      <!-- Insert wind here -->
-
-      Precipitation
-      <!-- Insert precipitation here -->
-
-      Daily forecast
-      <!-- Insert daily forecast for the next 7 days here -->
-
-      Hourly forecast
-      <!-- Insert hourly forecast for the selected day here -->
-
       <div class="attribution">
         Challenge by <a href="https://www.frontendmentor.io?ref=challenge"
           >Frontend Mentor</a

@@ -1,0 +1,12 @@
+.home {
+  padding: 1rem;
+  padding-bottom: 4rem;
+
+  background: repeating-linear-gradient(
+    to right,
+    hsl(233, 67%, 56%) 10px,
+    hsl(233, 67%, 56%) 10px,
+    hsl(248, 70%, 36%) 30px,
+    hsl(248, 70%, 36%) 20px
+  );
+}
