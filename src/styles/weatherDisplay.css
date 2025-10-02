@@ -2,11 +2,18 @@
   padding: 1rem;
   padding-bottom: 4rem;
 
-  background: repeating-linear-gradient(
+  /* background: repeating-linear-gradient(
     to right,
-    hsl(233, 67%, 56%) 10px,
-    hsl(233, 67%, 56%) 10px,
-    hsl(248, 70%, 36%) 30px,
-    hsl(248, 70%, 36%) 20px
-  );
+    hsl(248, 70%, 36%) 0px 10px,
+    hsl(248, 70%, 36%) 10px 20px,
+    hsl(233, 67%, 56%) 20px 30px,
+    hsl(233, 67%, 56%) 30px 40px
+  ); */
+}
+
+.titleHeader {
+  margin: 3rem 0;
+  font-size: 3.25rem;
+  padding: 1rem;
+  line-height: 120%;
 }

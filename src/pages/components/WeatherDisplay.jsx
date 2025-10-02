@@ -100,7 +100,7 @@ export default function WeatherDisplay() {
           unitType={unitType}
         />
       </div>
-      <h1>How's the sky looking today?</h1>
+      <h1 className="titleHeader">How's the sky looking today?</h1>
 
       <SearchForm handleSearch={handleSearch} />
       {loading && <p>Loading...</p>}

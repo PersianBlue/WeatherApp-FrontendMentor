@@ -1,0 +1,19 @@
+.searchContainer {
+  /* border: 3px solid; */
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.searchField {
+  background: url("../../../assets/images/icon-search.svg") no-repeat scroll 7px
+    7px;
+  background-position: left 1rem center;
+  padding: 1rem 3em;
+  background-color: var(--color-neutral-800);
+  background-repeat: "no-repeat";
+  border-radius: 20px;
+}
+.searchField::placeholder {
+  color: var(--color-neutral-200);
+}
