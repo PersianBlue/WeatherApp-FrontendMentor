@@ -1,0 +1,27 @@
+.DailyForecast {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.WeatherCard {
+  display: flex;
+  flex-direction: column;
+  margin: 0.5rem;
+  background-color: var(--color-neutral-800);
+  border: solid 3px orange;
+  min-width: 100px;
+}
+
+.TemperatureRange {
+  width: 100%;
+  font-size: 0.8rem;
+}
+
+.MaxTemperature {
+  float: right;
+}
+
+.MinTemperature {
+  float: left;
+}
