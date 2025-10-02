@@ -64,7 +64,7 @@ export default function WeatherDisplay() {
     try {
       const location = await geocodeLocation(cityName);
       console.log(
-        `Found ${location.name}: ${location.latitude}, ${location.longitude}`
+        `Found ${location.name}: ${location.latitude}, ${location.longitude}, ${location.country}`
       );
       setLocationData(location);
       // Update params with new latitude and longitude
@@ -87,7 +87,7 @@ export default function WeatherDisplay() {
 
   return (
     <div className="home gap-2">
-      <div className="border-2 flex items-center justify-between">
+      <div className="Header border-2 flex items-center justify-between">
         <img
           className="logo"
           src="../../../assets/images/logo.svg"
@@ -111,8 +111,8 @@ export default function WeatherDisplay() {
           locationData={locationData}
           params={params}
         />
-        <DailyForecast weatherData={weatherData} />
-        <HourlyForecast weatherData={weatherData} />
+        {/* <DailyForecast weatherData={weatherData} /> */}
+        {/* <HourlyForecast weatherData={weatherData} /> */}
       </div>
     </div>
   );

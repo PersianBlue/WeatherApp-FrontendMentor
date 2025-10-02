@@ -1,0 +1,57 @@
+.weatherInfoContainer {
+  border: 3px green solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 1.25rem;
+}
+.weatherInfo {
+  background: url("../../../assets/images/bg-today-small.svg") no-repeat;
+  width: 100%;
+  background-size: cover;
+  border: 5px yellow solid;
+}
+
+.location {
+  font-size: 2rem;
+}
+.TemperatureContainer {
+  display: flex;
+  flex-direction: row;
+  border: solid red 3px;
+  align-items: center;
+  justify-content: right;
+  width: 100%;
+}
+.TemperatureText {
+  font-size: 4rem;
+  border: solid red 3px;
+  flex: 1;
+  min-width: 50%;
+}
+.TemperatureIcon {
+  flex: 1;
+  max-width: 50%;
+}
+.WeatherDetailsContainer {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  border: 3px red solid;
+}
+.WeatherDetails {
+  background-color: var(--color-neutral-800);
+  padding: 1.25rem;
+  border-radius: 20px;
+}
+
+.Label {
+  color: var(--color-neutral-200);
+}
+.Value {
+  color: var(--color-neutral-0);
+  font-size: 1.5rem;
+}

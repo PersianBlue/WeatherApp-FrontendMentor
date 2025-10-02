@@ -1,4 +1,4 @@
-import React from "react";
+import "../../styles/CurrentForecast.css";
 
 export default function CurrentForecast({ weatherData, locationData, params }) {
   if (!weatherData || !weatherData.current) {
@@ -16,29 +16,53 @@ export default function CurrentForecast({ weatherData, locationData, params }) {
 
   return (
     <>
-      <div>
-        <p>{locationData.name}</p>
-        <p>
-          Current date:{" "}
-          {new Date().toLocaleDateString("en-US", {
-            year: "numeric",
-            month: "long",
-            day: "numeric",
-          })}
-        </p>
-        <p>
-          Temperature: {temp} {tempUnit}
-        </p>
-        <p>
-          Feels like: {apparent_temp} {tempUnit}
-        </p>
-        <p>Humidity: {rel_humidity} %</p>
-        <p>
-          Precipitation: {precipitation} {precipitationUnit}
-        </p>
-        <p>
-          Wind Speed: {wind_speed} {windSpeedUnit}
-        </p>
+      <div className="weatherInfoContainer">
+        <div className="weatherInfo">
+          <h1 className="location">
+            {locationData.name}, {locationData.country}
+          </h1>
+          <p className="text-neutral-0 ">
+            {new Date().toLocaleDateString("en-US", {
+              weekday: "long",
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })}
+          </p>
+          <div className="TemperatureContainer">
+            <img
+              src="../../../assets/images/icon-sunny.webp"
+              className="TemperatureIcon"
+            />
+            <h1 className="TemperatureText">
+              {temp} {tempUnit}
+            </h1>
+          </div>
+        </div>
+        <div className="WeatherDetailsContainer">
+          <div className="WeatherDetails">
+            <p className="Label">Feels like:</p>
+            <p className="Value">
+              {apparent_temp} {tempUnit}
+            </p>
+          </div>
+          <div className="WeatherDetails">
+            <p className="Label">Humidity:</p>{" "}
+            <p className="Value">{rel_humidity} %</p>
+          </div>
+          <div className="WeatherDetails">
+            <p className="Label">Precipitation:</p>{" "}
+            <p className="Value">
+              {precipitation} {precipitationUnit}
+            </p>
+          </div>
+          <div className="WeatherDetails">
+            <p className="Label">Wind Speed:</p>{" "}
+            <p className="Value">
+              {wind_speed} {windSpeedUnit}
+            </p>
+          </div>
+        </div>
       </div>
     </>
   );
