@@ -8,11 +8,17 @@
   display: flex;
   flex-direction: column;
   margin: 0.5rem;
+  justify-content: center;
   background-color: var(--color-neutral-800);
-  border: solid 3px orange;
+  /* border: solid 3px orange; */
   min-width: 100px;
+  padding: 0.5em;
 }
 
+.WeatherCardIcon {
+  border: solid 3px orange;
+  margin: 0 auto;
+}
 .TemperatureRange {
   width: 100%;
   font-size: 0.8rem;
