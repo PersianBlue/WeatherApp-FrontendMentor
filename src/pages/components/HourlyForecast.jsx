@@ -2,11 +2,44 @@ import { useMemo, useState } from "react";
 import weatherDescriptions from "/assets/weatherDescriptions.json";
 import "../../styles/HourlyForecast.css";
 
-export default function HourlyForecast({ weatherData, params }) {
-  if (!weatherData || !weatherData.hourly.time) {
-    return null;
-  }
+export default function HourlyForecast({ weatherData, params, loading }) {
+  // if (!weatherData || !weatherData.hourly.time) {
+  //   return null;
+  // }
   const tempUnit = params.temperature_unit === "fahrenheit" ? "°F" : "°C";
+
+  if (loading || !weatherData) {
+    const arr = [1, 3, 4, 5, 6, 7, 8, 9, 10];
+    return (
+      <div className="HourlyForecastContainer skeleton">
+        <div className="HourlyForecastHeader">
+          <h1>Hourly forecast</h1>
+          <button
+            // className="HourlyForecastDropdown"
+            onClick={() => setShowDropdown(!showDropdown)}
+          >
+            <label>
+              {/* {daysData[selectedDay]?.date.toLocaleString("en-us", {
+              weekday: "long",
+            })} */}
+            </label>
+            <select className="HourlyForecastDropdown skeleton"></select>
+            {/* <img
+            src="../../../assets/images/icon-dropdown.svg"
+            alt="Dropdown Icon"
+          /> */}
+          </button>
+        </div>
+        {arr.map((hour, index) => (
+          <div key={index} className="HourlyForecastCard">
+            <p className="skeleton skeleton-text"></p>
+            <p></p>
+            <p></p>
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedDay, setSelectedDay] = useState(0);

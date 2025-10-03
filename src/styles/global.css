@@ -65,8 +65,34 @@ transform: translateY(-1px);
 
 
 
+.skeleton {
+  opacity: 0.7;
+  animation: skeleton-loading 1s linear infinite alternate;
+  background-image: none !important; 
+}
 
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl(200, 20%, 70%);
+  }
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
 
+.skeleton-text {
+  width: 100%;
+  height: 0.5rem;
+  margin-bottom: 0.25rem;
+  border-radius: 0.125rem;
+  background-color: hsl(200, 20%, 70%) !important; /* Base color */
+  color: none !important;
+}
+
+.skeleton-text:last-child{
+  margin-bottom: 0;
+  width: 80%;
+}
 
 :root{
     --neutral: {

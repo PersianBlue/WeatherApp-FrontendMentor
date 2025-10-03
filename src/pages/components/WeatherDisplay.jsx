@@ -134,7 +134,7 @@ export default function WeatherDisplay() {
   }, [params]);
 
   return (
-    <div className="home gap-2 skeleton">
+    <div className="home gap-2 ">
       <div className="Header flex items-center justify-between">
         <img
           className="logo"
@@ -150,7 +150,6 @@ export default function WeatherDisplay() {
       </div>
       <h1 className="titleHeader">How's the sky looking today?</h1>
 
-      {loading && <p>Loading...</p>}
       <SearchForm
         handleSearch={handleSearch}
         params={params}
@@ -161,17 +160,25 @@ export default function WeatherDisplay() {
         suggestions={suggestions}
         setSuggestions={setSuggestions}
       />
-
-      <div className="main ">
+      <div className="main">
         <div className="MainContainer">
           <CurrentForecast
+            loading={loading}
             weatherData={weatherData}
             locationData={locationData}
             params={params}
           />
-          <DailyForecast weatherData={weatherData} params={params} />
+          <DailyForecast
+            weatherData={weatherData}
+            params={params}
+            loading={loading}
+          />
         </div>
-        <HourlyForecast weatherData={weatherData} params={params} />
+        <HourlyForecast
+          weatherData={weatherData}
+          params={params}
+          loading={loading}
+        />
       </div>
     </div>
   );
