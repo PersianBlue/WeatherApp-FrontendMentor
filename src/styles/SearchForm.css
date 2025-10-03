@@ -7,8 +7,7 @@
 }
 
 .searchField {
-  background: url("../../../assets/images/icon-search.svg") no-repeat scroll 7px
-    7px;
+  background: url("/assets/images/icon-search.svg") no-repeat scroll 7px 7px;
   background-position: left 1rem center;
   padding: 1em 3em;
   background-color: var(--color-neutral-800);
