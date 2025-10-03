@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import weatherDescriptions from "../../../assets/weatherDescriptions.json";
+import weatherDescriptions from "/assets/weatherDescriptions.json";
 import "../../styles/HourlyForecast.css";
 
 export default function HourlyForecast({ weatherData, params }) {

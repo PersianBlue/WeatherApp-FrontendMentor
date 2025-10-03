@@ -1,4 +1,4 @@
-import weatherDescriptions from "../../../assets/weatherDescriptions.json";
+import weatherDescriptions from "/assets/weatherDescriptions.json";
 import "../../styles/DailyForecast.css";
 
 export default function DailyForecast({ weatherData, params }) {
@@ -27,7 +27,7 @@ export default function DailyForecast({ weatherData, params }) {
                   weatherDescriptions[weatherData.daily.weather_code[index]].day
                     .image
                 }
-                alt="Weather Code Icon"
+                alt="Weather Icon"
               ></img>
 
               <div className="TemperatureRange">
