@@ -90,6 +90,12 @@ export default function WeatherDisplay() {
         const location2 = await geocodeLocation(cityName);
         console.log("Geocoded location", location2);
       } else {
+        const result = await geocodeLocation(cityName);
+        console.log("Result of geocoding", result);
+        if (Array.isArray(result)) {
+          setSuggestions(result);
+          return;
+        }
         location = await geocodeLocation(cityName);
       }
       console.log(
@@ -104,7 +110,7 @@ export default function WeatherDisplay() {
         .toISOString()
         .split("T")[0];
 
-      console.log("Old params", params);
+      // console.log("Old params", params);
       const updatedParams = {
         ...params,
         latitude: location.latitude,
@@ -112,10 +118,10 @@ export default function WeatherDisplay() {
         start_date: today,
         end_date: endDate,
       };
-      console.log("Updated params:", updatedParams);
+      // console.log("Updated params:", updatedParams);
       setParams(updatedParams);
       const response = await handleFetchAPI(url, updatedParams);
-      console.log("Weather data response:", response);
+      // console.log("Weather data response:", response);
       setWeatherData(response);
       setLoading(false);
       setSuggestions([]);

@@ -89,7 +89,7 @@ export default function SearchForm({
             ))}
           </div>
         )}
-        {loading && <div className="LoadingText">Searching...</div>}
+        {loading && <div className="LoadingText">Choose location below:</div>}
       </div>
     </form>
   );
