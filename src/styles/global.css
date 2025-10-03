@@ -2,6 +2,9 @@
 
 
 @layer base {
+  *,*::after, *::before{
+    box-sizing: border-box;
+  }
   html {
     font-size: 18px; /* Body copy size */
   }
@@ -20,6 +23,21 @@
     font-family: "Bricolage Grotesque", system-ui, sans-serif;
     font-weight: 700;
   }
+}
+
+input:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+button:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+select:focus {
+  outline: 2px solid white;
+  outline-offset: 2px;
 }
 
 :root{

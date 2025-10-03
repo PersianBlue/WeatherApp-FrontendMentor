@@ -15,7 +15,9 @@ export default function DailyForecast({ weatherData, params }) {
           weatherData.daily.time.map((date, index) => (
             <div className="WeatherCard" key={date}>
               <p className="cardLabel">
-                {new Date(date).toLocaleString("en", { weekday: "long" })}
+                {new Date(date)
+                  .toLocaleString("en", { weekday: "long" })
+                  .slice(0, 3)}
               </p>
               <img
                 className="WeatherCardIcon"

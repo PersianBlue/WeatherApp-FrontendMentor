@@ -15,14 +15,12 @@ export default function HourlyForecast({ weatherData, params }) {
     const today = new Date();
     if (date.toDateString() === today.toDateString()) return "Today";
 
-    const tomorrow = new Date(today);
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    if (date.toDateString() === tomorrow.toDateString()) return "Tomorrow";
+    // const tomorrow = new Date(today);
+    // tomorrow.setDate(tomorrow.getDate() + 1);
+    // if (date.toDateString() === tomorrow.toDateString()) return "Tomorrow";
 
     return date.toLocaleDateString("en-US", {
       weekday: "long",
-      month: "short",
-      day: "numeric",
     });
   };
 
@@ -70,17 +68,23 @@ export default function HourlyForecast({ weatherData, params }) {
   }, [weatherData]);
 
   const selectedData = getSelectedDayData();
+  console.log("Selected day", selectedDay);
 
   return (
     <div className="HourlyForecastContainer">
       <div className="HourlyForecastHeader">
         <h1>Hourly forecast</h1>
         <button
-          className="HourlyForecastDropdown"
+          // className="HourlyForecastDropdown"
           onClick={() => setShowDropdown(!showDropdown)}
         >
-          <label>Select Day:</label>
+          <label>
+            {/* {daysData[selectedDay]?.date.toLocaleString("en-us", {
+              weekday: "long",
+            })} */}
+          </label>
           <select
+            className="HourlyForecastDropdown"
             value={selectedDay}
             onChange={(e) => setSelectedDay(parseInt(e.target.value))}
           >
@@ -90,18 +94,11 @@ export default function HourlyForecast({ weatherData, params }) {
               </option>
             ))}
           </select>
-          <img
+          {/* <img
             src="../../../assets/images/icon-dropdown.svg"
             alt="Dropdown Icon"
-          />
+          /> */}
         </button>
-        {showDropdown && (
-          <div className="DayDropdownMenu">
-            <div className="Day">
-              <button></button>
-            </div>
-          </div>
-        )}
       </div>
       {weatherData.hourly.time &&
         selectedData.map((hour, index) => (
