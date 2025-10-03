@@ -2,7 +2,7 @@
   position: absolute;
   top: 100%; /* Positions it right below the trigger button */
   right: 0;
-  background: var(--color-neutral-800);
+  background: #262540;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   padding: 8px 0;
@@ -61,7 +61,7 @@
 }
 
 .OptionButton:hover {
-  background-color: var(--color-neutral-700);
+  background-color: #302F4A;
 }
 
 .OptionButton.selected {

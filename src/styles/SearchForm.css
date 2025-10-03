@@ -1,19 +1,38 @@
 .searchContainer {
   /* border: 3px solid; */
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 0.8rem;
   margin: 2rem 0;
+  flex-wrap: wrap;
 }
 
 .searchField {
   background: url("/assets/images/icon-search.svg") no-repeat scroll 7px 7px;
   background-position: left 1rem center;
   padding: 1em 3em;
-  background-color: var(--color-neutral-800);
+  background-color: #262540;
   background-repeat: "no-repeat";
   border-radius: 20px;
+  width: 100%;
 }
 .searchField::placeholder {
   color: var(--color-neutral-200);
+}
+
+.searchButton {
+  width: 100%;
+  padding: 1em;
+}
+
+@media (min-width: 900px) {
+  .searchButton {
+    display: flex;
+    width: auto;
+    padding: 1em 2em;
+  }
+
+  .searchField {
+    max-width: 720px;
+  }
 }

@@ -121,7 +121,7 @@ export default function WeatherDisplay() {
 
   return (
     <div className="home gap-2">
-      <div className="Header border-2 flex items-center justify-between">
+      <div className="Header flex items-center justify-between">
         <img
           className="logo"
           src="/assets/images/logo.svg"

@@ -23,7 +23,7 @@ export default function SearchForm({ handleSearch, params }) {
             backgroundColor: "hsl(233, 67%, 56%)",
             borderRadius: "20px",
           }}
-          className="w-full md:w-auto  !text-neutral-0 rounded-xl py-4 px-6 !hover:bg-blue-60 flex items-center justify-center "
+          className="searchButton"
           type="submit"
         >
           Search

@@ -9,10 +9,11 @@
   flex-direction: column;
   margin: 0.5rem;
   justify-content: center;
-  background-color: var(--color-neutral-800);
+  background-color: #262540;
   /* border: solid 3px orange; */
   min-width: 100px;
   padding: 0.5em;
+  border-radius: 20px;
 }
 
 .WeatherCardIcon {

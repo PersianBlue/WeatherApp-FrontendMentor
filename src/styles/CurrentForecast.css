@@ -52,7 +52,7 @@
   /* border: 3px red solid; */
 }
 .WeatherDetails {
-  background-color: var(--color-neutral-800);
+  background-color: #262540;
   padding: 1.25rem;
   border-radius: 20px;
   text-align: left;
