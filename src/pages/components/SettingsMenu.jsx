@@ -28,12 +28,9 @@ export default function SettingsMenu({
         className="flex items-center justify-between gap-4 border-2"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <img src="../../../assets/images/icon-units.svg" alt="settings icon" />
+        <img src="/assets/images/icon-units.svg" alt="settings icon" />
         Units
-        <img
-          src="../../../assets/images/icon-dropdown.svg"
-          alt="Dropdown Icon"
-        />
+        <img src="/assets/images/icon-dropdown.svg" alt="Dropdown Icon" />
       </button>
       {isOpen && (
         <div className="UnitsDropdownMenu">

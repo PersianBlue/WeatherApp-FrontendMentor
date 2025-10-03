@@ -31,7 +31,7 @@ export default function CurrentForecast({ weatherData, locationData, params }) {
           </p>
           <div className="TemperatureContainer">
             <img
-              src="../../../assets/images/icon-sunny.webp"
+              src="/assets/images/icon-sunny.webp"
               className="TemperatureIcon"
             />
             <h1 className="TemperatureText">

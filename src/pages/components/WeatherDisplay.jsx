@@ -124,7 +124,7 @@ export default function WeatherDisplay() {
       <div className="Header border-2 flex items-center justify-between">
         <img
           className="logo"
-          src="../../../assets/images/logo.svg"
+          src="/assets/images/logo.svg"
           alt="Weather Now Logo"
         />
         <SettingsMenu
