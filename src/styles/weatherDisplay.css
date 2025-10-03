@@ -5,6 +5,21 @@
   background-color: #02012c;
 }
 
+.skeleton {
+  opacity: 0.7;
+  animation: skeleton-loading, 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: hsl (200, 20%, 70%);
+  }
+
+  100% {
+    background-color: hsl(200, 20%, 95%);
+  }
+}
+
 .titleHeader {
   margin: 3rem 0;
   font-size: 3.25rem;
@@ -12,15 +27,20 @@
   line-height: 120%;
 }
 
+.main {
+  padding: 1em;
+}
 @media (min-width: 900px) {
   .main {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 1rem;
     /* justify-content: space-evenly; */
     margin: 0 auto;
     /* border: solid red 3px; */
     max-width: 1400px;
+    justify-content: center;
+    align-items: center;
   }
 
   .mainContainer {

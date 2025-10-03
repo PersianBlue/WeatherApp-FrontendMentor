@@ -70,7 +70,6 @@ export default function SearchForm({
         <button className="searchButton" type="submit">
           Search{" "}
         </button>
-
         {suggestions.length > 0 && (
           <div className="SuggestionsDropdown">
             {suggestions.map((city) => (
@@ -88,7 +87,6 @@ export default function SearchForm({
             ))}
           </div>
         )}
-
         {loading && <div className="LoadingText">Searching...</div>}
       </div>
     </form>
