@@ -66,11 +66,32 @@ export default function WeatherDisplay() {
 
   const url = "https://api.open-meteo.com/v1/forecast";
 
-  async function handleSearch(cityName) {
+  async function handleSearch(
+    cityName,
+    country = "",
+    longitude = 0,
+    latitude = 0
+  ) {
     setLoading(true);
 
     try {
-      const location = await geocodeLocation(cityName);
+      let location;
+      if (country != "" && longitude != 0 && latitude != 0) {
+        console.log(
+          "Given parameters for Country,cityName",
+          country,
+          cityName,
+          "Long",
+          longitude,
+          "Lat:",
+          latitude
+        );
+        location = { name: cityName, country, longitude, latitude };
+        const location2 = await geocodeLocation(cityName);
+        console.log("Geocoded location", location2);
+      } else {
+        location = await geocodeLocation(cityName);
+      }
       console.log(
         `Found ${location.name}: ${location.latitude}, ${location.longitude}, ${location.country}`
       );
@@ -161,6 +182,7 @@ export default function WeatherDisplay() {
         suggestions={suggestions}
         setSuggestions={setSuggestions}
       />
+      {loading && "Loading..."}
       <div className="main">
         <div className="MainContainer">
           <CurrentForecast

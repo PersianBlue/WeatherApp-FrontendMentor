@@ -26,6 +26,9 @@
   background-repeat: "no-repeat";
   border-radius: 20px;
   width: 100%;
+  font-size: 16px !important;
+  transform: none !important;
+  transition: none !important;
 }
 .searchField::placeholder {
   color: var(--color-neutral-200);
@@ -36,6 +39,15 @@
 .searchField:focus {
   box-shadow: 0 0 3px white;
   box-shadow: 0 0 5px #02012c;
+}
+
+.searchButton:hover {
+  background-color: #2b1b9c;
+  transform: translateY(-1px);
+}
+.searchButton:focus {
+  box-shadow: 0 0 0 3px #02012c;
+  box-shadow: 0 0 5px #4658d9;
 }
 
 .searchButton {

@@ -26,6 +26,7 @@ export default function SearchForm({
         )}&count=5`
       );
       const data = await response.json();
+      console.log("Suggestions data", data.results);
       setSuggestions(data.results || []);
     } catch (error) {
       console.error("Error fetching cities:", error);
@@ -43,9 +44,10 @@ export default function SearchForm({
   }, [query, searchCities]);
 
   const handleSelectCity = (city) => {
-    setQuery(city.name);
+    console.log("Setting city:", city);
+    setQuery(`${city.name}`);
     setSuggestions([]);
-    handleSearch(city.name);
+    handleSearch(city.name, city.country, city.longitude, city.latitude);
   };
 
   return (

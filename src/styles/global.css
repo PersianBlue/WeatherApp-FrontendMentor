@@ -25,42 +25,14 @@
   }
 }
 
-input:focus {
-  outline: 2px solid white;
-  outline-offset: 2px;
-}
 
-button:focus {
-  outline: 2px solid white;
-  outline-offset: 2px;
-}
-
-select:focus {
-  outline: 2px solid white;
-  outline-offset: 2px;
-  
-}
 input,button,select{
   background-color: #3C3B5E;
 }
 
-/* Global button/input/dropdown styles */
 button, 
-select, 
-input, 
-.DropdownOption,
-.SwitchButton,
-.OptionButton {
+select  {
   transition: all 0.2s ease-in-out;
-}
-
-.searchButton:hover{
-background-color: #2B1B9C;
-transform: translateY(-1px);
-}
-.searchButton:focus{
-  box-shadow: 0 0 0 3px #02012C;
-  box-shadow: 0 0 5px #4658D9;
 }
 
 
