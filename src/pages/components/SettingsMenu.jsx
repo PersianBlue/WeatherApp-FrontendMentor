@@ -19,15 +19,16 @@ export default function SettingsMenu({
       }
     } catch (error) {
       console.log("error in handleSwitchUnitType", error);
+    } finally {
+      setTimeout(() => {
+        setIsOpen(!isOpen);
+      }, 500);
     }
   };
 
   return (
     <div className="SettingsMenu">
-      <button
-        className="flex items-center justify-between gap-4 border-2"
-        onClick={() => setIsOpen(!isOpen)}
-      >
+      <button className=" SettingsButton f" onClick={() => setIsOpen(!isOpen)}>
         <img src="/assets/images/icon-units.svg" alt="settings icon" />
         Units
         <img src="/assets/images/icon-dropdown.svg" alt="Dropdown Icon" />
