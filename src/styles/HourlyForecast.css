@@ -21,6 +21,7 @@
 
 .HourlyForecastCard {
   display: flex;
+  /* padding: 0.5em 1em; */
   padding: 0.5em;
   background-color: #3c3b5e;
   /* border: solid 3px green; */

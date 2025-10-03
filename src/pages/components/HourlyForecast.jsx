@@ -11,17 +11,19 @@ export default function HourlyForecast({ weatherData, params }) {
   const [showDropdown, setShowDropdown] = useState(false);
   const [selectedDay, setSelectedDay] = useState(0);
 
-  const getDayDisplay = (date, index) => {
-    const today = new Date();
-    if (date.toDateString() === today.toDateString()) return "Today";
+  const getDayDisplay = (dateLocal, index) => {
+    const now = new Date();
+    const todayLocal = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate()
+    );
 
-    // const tomorrow = new Date(today);
-    // tomorrow.setDate(tomorrow.getDate() + 1);
-    // if (date.toDateString() === tomorrow.toDateString()) return "Tomorrow";
-
-    return date.toLocaleDateString("en-US", {
-      weekday: "long",
-    });
+    if (dateLocal.getTime() === todayLocal.getTime()) {
+      return "Today";
+    } else {
+      return dateLocal.toLocaleDateString("en-US", { weekday: "long" });
+    }
   };
 
   // Get data for selected day
@@ -29,10 +31,24 @@ export default function HourlyForecast({ weatherData, params }) {
     if (!daysData[selectedDay]) return [];
 
     const dayData = daysData[selectedDay];
+    const now = new Date();
+
+    // Check if selected day is today (timezone-safe)
+    const todayLocal = new Date(
+      now.getFullYear(),
+      now.getMonth(),
+      now.getDate()
+    );
+    const selectedDayLocal = new Date(
+      dayData.date.getFullYear(),
+      dayData.date.getMonth(),
+      dayData.date.getDate()
+    );
+
+    const isToday = selectedDayLocal.getTime() === todayLocal.getTime();
 
     // If today, only show future hours
-    if (selectedDay === 0) {
-      const now = new Date();
+    if (isToday) {
       return dayData.hours.filter((hour) => new Date(hour.time) >= now);
     }
 
@@ -44,8 +60,13 @@ export default function HourlyForecast({ weatherData, params }) {
     if (!weatherData?.hourly?.time) return [];
 
     const groups = {};
+    const now = new Date();
 
+    // Filter out all past hours first
     weatherData.hourly.time.forEach((time, index) => {
+      const hourDate = new Date(time);
+      if (hourDate < now) return; // Skip past hours
+
       const date = new Date(time);
       const dateKey = date.toDateString();
 

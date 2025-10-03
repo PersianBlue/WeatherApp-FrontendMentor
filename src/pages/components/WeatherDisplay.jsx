@@ -74,11 +74,20 @@ export default function WeatherDisplay() {
       );
       setLocationData(location);
       // Update params with new latitude and longitude
+      //Set Dates to only start from today
+      const today = new Date().toISOString().split("T")[0];
+      // Get date 7 days from now
+      const endDate = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+        .toISOString()
+        .split("T")[0];
+
       console.log("Old params", params);
       const updatedParams = {
         ...params,
         latitude: location.latitude,
         longitude: location.longitude,
+        start_date: today,
+        end_date: endDate,
       };
       console.log("Updated params:", updatedParams);
       setParams(updatedParams);
