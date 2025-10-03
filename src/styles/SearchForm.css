@@ -19,6 +19,13 @@
 .searchField::placeholder {
   color: var(--color-neutral-200);
 }
+.searchField:hover {
+  background-color: #302f4a;
+}
+.searchField:focus {
+  box-shadow: 0 0 3px white;
+  box-shadow: 0 0 5px #02012c;
+}
 
 .searchButton {
   width: 100%;

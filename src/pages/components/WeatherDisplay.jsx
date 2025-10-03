@@ -96,6 +96,7 @@ export default function WeatherDisplay() {
       setWeatherData(response);
       setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.error("Error in handleSearch", error);
     }
   }

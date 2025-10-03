@@ -44,6 +44,29 @@ input,button,select{
   background-color: #3C3B5E;
 }
 
+/* Global button/input/dropdown styles */
+button, 
+select, 
+input, 
+.DropdownOption,
+.SwitchButton,
+.OptionButton {
+  transition: all 0.2s ease-in-out;
+}
+
+.searchButton:hover{
+background-color: #2B1B9C;
+transform: translateY(-1px);
+}
+.searchButton:focus{
+  box-shadow: 0 0 0 3px #02012C;
+  box-shadow: 0 0 5px #4658D9;
+}
+
+
+
+
+
 
 :root{
     --neutral: {
