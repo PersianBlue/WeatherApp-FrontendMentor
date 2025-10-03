@@ -140,12 +140,14 @@ export default function WeatherDisplay() {
       {loading && <p>Loading...</p>}
 
       <div className="main ">
-        <CurrentForecast
-          weatherData={weatherData}
-          locationData={locationData}
-          params={params}
-        />
-        <DailyForecast weatherData={weatherData} params={params} />
+        <div className="MainContainer">
+          <CurrentForecast
+            weatherData={weatherData}
+            locationData={locationData}
+            params={params}
+          />
+          <DailyForecast weatherData={weatherData} params={params} />
+        </div>
         <HourlyForecast weatherData={weatherData} params={params} />
       </div>
     </div>

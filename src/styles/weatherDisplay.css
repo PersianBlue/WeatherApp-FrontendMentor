@@ -3,14 +3,6 @@
   padding-bottom: 4rem;
   margin-bottom: 1rem;
   background-color: #02012c;
-
-  /* background: repeating-linear-gradient(
-    to right,
-    hsl(248, 70%, 36%) 0px 10px,
-    hsl(248, 70%, 36%) 10px 20px,
-    hsl(233, 67%, 56%) 20px 30px,
-    hsl(233, 67%, 56%) 30px 40px
-  ); */
 }
 
 .titleHeader {
@@ -18,4 +10,21 @@
   font-size: 3.25rem;
   padding: 1rem;
   line-height: 120%;
+}
+
+@media (min-width: 900px) {
+  .main {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    /* justify-content: space-evenly; */
+    margin: 0 auto;
+    border: solid red 3px;
+    max-width: 1400px;
+  }
+
+  .mainContainer {
+    flex: 1;
+    min-width: 0;
+  }
 }

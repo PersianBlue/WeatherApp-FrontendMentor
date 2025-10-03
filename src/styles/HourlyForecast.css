@@ -3,6 +3,8 @@
   border-radius: 20px;
   background-color: var(--color-800);
   border: solid 3px orange;
+  width: 100%;
+  max-width: 600px;
 }
 
 .HourlyForecastHeader {
