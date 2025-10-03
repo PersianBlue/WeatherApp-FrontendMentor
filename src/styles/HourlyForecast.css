@@ -2,7 +2,7 @@
   padding: 0.5em;
   border-radius: 20px;
   background-color: var(--color-800);
-  border: solid 3px orange;
+  /* border: solid 3px orange; */
   width: 100%;
   max-width: 600px;
 }
@@ -23,7 +23,7 @@
   display: flex;
   padding: 0.5em;
   background-color: var(color--neutral-800);
-  border: solid 3px green;
+  /* border: solid 3px green; */
   justify-content: space-between;
 }
 

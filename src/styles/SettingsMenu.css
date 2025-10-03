@@ -66,8 +66,6 @@
 
 .OptionButton.selected {
   font-weight: 500;
-  border-color: lightblue;
-  transition: border-color 0.2s;
 }
 
 .Checkmark {
