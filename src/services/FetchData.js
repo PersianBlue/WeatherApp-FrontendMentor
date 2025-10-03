@@ -2,7 +2,7 @@ import { fetchWeatherApi } from "openmeteo";
 
 export async function geocodeLocation(cityName) {
   const location = encodeURIComponent(cityName);
-  console.log(location);
+  console.log("Location in geocodeLocation", location);
   const geocodeUrl = `https://geocoding-api.open-meteo.com/v1/search?name=${location}&count=1`;
 
   const response = await fetch(geocodeUrl);

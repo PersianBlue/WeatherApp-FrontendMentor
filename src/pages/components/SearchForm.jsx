@@ -19,7 +19,6 @@ export default function SearchForm({
       return;
     }
 
-    setLoading(true);
     try {
       const response = await fetch(
         `https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
@@ -32,7 +31,6 @@ export default function SearchForm({
       console.error("Error fetching cities:", error);
       setSuggestions([]);
     } finally {
-      setLoading(false);
     }
   }, []);
 
@@ -56,12 +54,14 @@ export default function SearchForm({
       onSubmit={(e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
-        handleSearch(formData.get("search"), params);
+        console.log("Form value:", query);
+        handleSearch(query, params);
       }}
     >
       <div className="searchContainer">
         <input
           type="text"
+          name="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Search for a city..."

@@ -122,6 +122,7 @@ export default function WeatherDisplay() {
         console.error("Error fetching weather data:", error);
       } finally {
         setLoading(false);
+        setSuggestions([]);
       }
     }, 300); // Wait 300ms after last params change
 
