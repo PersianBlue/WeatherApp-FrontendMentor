@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { set } from "astro:schema";
 import { geocodeLocation, handleFetchAPI } from "../../services/FetchData";
 import SearchForm from "./SearchForm";
@@ -10,7 +10,12 @@ import "../../styles/global.css";
 import "../..//styles/weatherDisplay.css";
 export default function WeatherDisplay() {
   const [weatherData, setWeatherData] = useState(null);
-  const [locationData, setLocationData] = useState(null);
+  const [locationData, setLocationData] = useState({
+    name: "Berlin",
+    country: "Germany",
+    latitude: 52.52437,
+    longitude: 13.41053,
+  });
   const [loading, setLoading] = useState(false);
   const [params, setParams] = useState({
     latitude: 52.52437,
@@ -28,6 +33,7 @@ export default function WeatherDisplay() {
   });
 
   const [unitType, setUnitType] = useState("metric");
+  const timeoutRef = useRef();
 
   const updateUnits = (unitType, newUnit) => {
     setParams((oldParams) => ({
@@ -85,6 +91,34 @@ export default function WeatherDisplay() {
     }
   }
 
+  useEffect(() => {
+    // Clear previous timeout
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    // Set new timeout for debounced fetch
+    timeoutRef.current = setTimeout(async () => {
+      setLoading(true);
+      try {
+        const response = await handleFetchAPI(url, params);
+        console.log("Weather data response:", response);
+        setWeatherData(response);
+      } catch (error) {
+        console.error("Error fetching weather data:", error);
+      } finally {
+        setLoading(false);
+      }
+    }, 300); // Wait 300ms after last params change
+
+    // Cleanup timeout on unmount
+    return () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, [params]);
+
   return (
     <div className="home gap-2">
       <div className="Header border-2 flex items-center justify-between">
@@ -106,13 +140,13 @@ export default function WeatherDisplay() {
       {loading && <p>Loading...</p>}
 
       <div className="main ">
-        {/* <CurrentForecast
+        <CurrentForecast
           weatherData={weatherData}
           locationData={locationData}
           params={params}
-        /> */}
-        <DailyForecast weatherData={weatherData} />
-        {/* <HourlyForecast weatherData={weatherData} /> */}
+        />
+        <DailyForecast weatherData={weatherData} params={params} />
+        <HourlyForecast weatherData={weatherData} params={params} />
       </div>
     </div>
   );

@@ -40,7 +40,7 @@
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1rem;
-  border: 3px red solid;
+  /* border: 3px red solid; */
 }
 .WeatherDetails {
   background-color: var(--color-neutral-800);
