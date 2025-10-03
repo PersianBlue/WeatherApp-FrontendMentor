@@ -38,6 +38,10 @@ button:focus {
 select:focus {
   outline: 2px solid white;
   outline-offset: 2px;
+  
+}
+input,button,select{
+  background-color: #3C3B5E;
 }
 
 :root{

@@ -1,0 +1,82 @@
+.UnitsDropdownMenu {
+  position: absolute;
+  top: 100%; /* Positions it right below the trigger button */
+  right: 0;
+  background: var(--color-neutral-800);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  padding: 8px 0;
+  min-width: 200px;
+  z-index: 1000;
+}
+.SettingsMenu {
+  position: relative;
+  display: inline-block;
+}
+
+.SwitchButton {
+  width: 100%;
+  padding: 12px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.SwitchButton:hover {
+  background-color: #f5f5f5;
+}
+
+.DropdownSection {
+  padding: 0;
+}
+
+.DropdownLabel {
+  padding: 8px 16px 4px;
+  font-size: 12px;
+  color: #8e8e93;
+}
+
+.OptionsContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.OptionButton {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 20px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.OptionButton:hover {
+  background-color: var(--color-neutral-700);
+}
+
+.OptionButton.selected {
+  font-weight: 500;
+  border-color: lightblue;
+  transition: border-color 0.2s;
+}
+
+.Checkmark {
+  color: white;
+  font-weight: bold;
+}
+
+.Separator {
+  height: 1px;
+  background-color: #e5e5ea;
+  margin: 4px 16px;
+}

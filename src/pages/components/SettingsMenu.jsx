@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../..//styles/SettingsMenu.css";
 
 export default function SettingsMenu({
   updateUnits,
@@ -22,7 +23,7 @@ export default function SettingsMenu({
   };
 
   return (
-    <div>
+    <div className="SettingsMenu">
       <button
         className="flex items-center justify-between gap-4 border-2"
         onClick={() => setIsOpen(!isOpen)}
@@ -34,51 +35,106 @@ export default function SettingsMenu({
           alt="Dropdown Icon"
         />
       </button>
-      {/* Dropdown Menu */}
       {isOpen && (
-        <div>
-          <div>
-            <button onClick={handleSwitchUnitType}>
-              Switch to {unitType === "imperial" ? "Metric" : "Imperial"}
-            </button>
-          </div>
+        <div className="UnitsDropdownMenu">
+          <button className="SwitchButton" onClick={handleSwitchUnitType}>
+            Switch to {unitType === "imperial" ? "Metric" : "Imperial"}
+          </button>
 
-          <div>
-            <p>Temperature</p>
-            <div>
+          <div className="DropdownSection">
+            <div className="DropdownLabel">Temperature</div>
+            <div className="OptionsContainer">
               <button
+                className={`OptionButton ${
+                  (unitType === "imperial" ? "fahrenheit" : "celsius") ===
+                  "celsius"
+                    ? "selected"
+                    : ""
+                }`}
                 onClick={() => updateUnits("temperature_unit", "celsius")}
               >
-                Celsius (°C)
+                <span>Celsius (°C)</span>
+                {(unitType === "imperial" ? "fahrenheit" : "celsius") ===
+                  "celsius" && <span className="Checkmark">✓</span>}
               </button>
               <button
+                className={`OptionButton ${
+                  (unitType === "imperial" ? "fahrenheit" : "celsius") ===
+                  "fahrenheit"
+                    ? "selected"
+                    : ""
+                }`}
                 onClick={() => updateUnits("temperature_unit", "fahrenheit")}
               >
-                Fahrenheit (°F)
+                <span>Fahrenheit (°F)</span>
+                {(unitType === "imperial" ? "fahrenheit" : "celsius") ===
+                  "fahrenheit" && <span className="Checkmark">✓</span>}
               </button>
             </div>
+            <div className="Separator"></div>
           </div>
 
-          <div>
-            <p>Wind Speed</p>
-            <div>
-              <button onClick={() => updateUnits("wind_speed_unit", "kmh")}>
-                km/h
+          <div className="DropdownSection">
+            <div className="DropdownLabel">Wind Speed</div>
+            <div className="OptionsContainer">
+              <button
+                className={`OptionButton ${
+                  (unitType === "imperial" ? "mph" : "kmh") === "kmh"
+                    ? "selected"
+                    : ""
+                }`}
+                onClick={() => updateUnits("wind_speed_unit", "kmh")}
+              >
+                <span>km/h</span>
+                {(unitType === "imperial" ? "mph" : "kmh") === "kmh" && (
+                  <span className="Checkmark">✓</span>
+                )}
               </button>
-              <button onClick={() => updateUnits("wind_speed_unit", "mph")}>
-                mph
+              <button
+                className={`OptionButton ${
+                  (unitType === "imperial" ? "mph" : "kmh") === "mph"
+                    ? "selected"
+                    : ""
+                }`}
+                onClick={() => updateUnits("wind_speed_unit", "mph")}
+              >
+                <span>mph</span>
+                {(unitType === "imperial" ? "mph" : "kmh") === "mph" && (
+                  <span className="Checkmark">✓</span>
+                )}
               </button>
             </div>
+            <div className="Separator"></div>
           </div>
 
-          <div>
-            <p>Precipitation</p>
-            <div>
-              <button onClick={() => updateUnits("precipitation_unit", "mm")}>
-                Millimeters (mm)
+          <div className="DropdownSection">
+            <div className="DropdownLabel">Precipitation</div>
+            <div className="OptionsContainer">
+              <button
+                className={`OptionButton ${
+                  (unitType === "imperial" ? "inch" : "mm") === "mm"
+                    ? "selected"
+                    : ""
+                }`}
+                onClick={() => updateUnits("precipitation_unit", "mm")}
+              >
+                <span>Millimeters (mm)</span>
+                {(unitType === "imperial" ? "inch" : "mm") === "mm" && (
+                  <span className="Checkmark">✓</span>
+                )}
               </button>
-              <button onClick={() => updateUnits("precipitation_unit", "inch")}>
-                Inches (in)
+              <button
+                className={`OptionButton ${
+                  (unitType === "imperial" ? "inch" : "mm") === "inch"
+                    ? "selected"
+                    : ""
+                }`}
+                onClick={() => updateUnits("precipitation_unit", "inch")}
+              >
+                <span>Inches (in)</span>
+                {(unitType === "imperial" ? "inch" : "mm") === "inch" && (
+                  <span className="Checkmark">✓</span>
+                )}
               </button>
             </div>
           </div>
