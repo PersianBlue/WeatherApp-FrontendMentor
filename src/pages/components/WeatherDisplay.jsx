@@ -33,6 +33,8 @@ export default function WeatherDisplay() {
   });
 
   const [unitType, setUnitType] = useState("metric");
+  const [query, setQuery] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
   const timeoutRef = useRef();
 
   const updateUnits = (unitType, newUnit) => {
@@ -95,8 +97,10 @@ export default function WeatherDisplay() {
       console.log("Weather data response:", response);
       setWeatherData(response);
       setLoading(false);
+      setSuggestions([]);
     } catch (error) {
       setLoading(false);
+      setSuggestions([]);
       console.error("Error in handleSearch", error);
     }
   }
@@ -146,7 +150,16 @@ export default function WeatherDisplay() {
       </div>
       <h1 className="titleHeader">How's the sky looking today?</h1>
 
-      <SearchForm handleSearch={handleSearch} />
+      <SearchForm
+        handleSearch={handleSearch}
+        params={params}
+        query={query}
+        setQuery={setQuery}
+        loading={loading}
+        setLoading={setLoading}
+        suggestions={suggestions}
+        setSuggestions={setSuggestions}
+      />
       {loading && <p>Loading...</p>}
 
       <div className="main ">

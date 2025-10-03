@@ -1,7 +1,8 @@
 .UnitsDropdownMenu {
   position: absolute;
-  top: 100%; /* Positions it right below the trigger button */
+  top: 100%; 
   right: 0;
+  z-index: 1000;
   background: #262540;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
